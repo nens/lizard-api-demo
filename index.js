@@ -35,7 +35,9 @@ function getFromInput (e) {
 function getTS(url) {
   url = url + '&format=json'
   fetch(url)
-    .then(putDataOnChart)
+    .then(function (response) {
+      return response.json()
+    }).then(putDataOnChart)
     .catch(function (error) {
       throw error
     })
