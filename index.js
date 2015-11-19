@@ -1,5 +1,5 @@
-var Chart = require('chartjs')
-var fetch = window.fetch
+//var Chart = require('chartjs')
+//var fetch = window.fetch
 
 var ctx = document.getElementById('prettychart').getContext('2d')
 var tsElement = document.getElementById('timeseries')
