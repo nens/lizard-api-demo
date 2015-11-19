@@ -28,12 +28,12 @@ function getFromInput (e) {
     return
   }
 
-  var url = tsElement.value + '&format=json'
-  
+  var url = tsElement.value  
   getTS(url)
 }
 
 function getTS(url) {
+  url = url + '&format=json'
   fetch(url)
     .then(putDataOnChart)
     .catch(function (error) {
