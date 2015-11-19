@@ -1,26 +1,35 @@
-var chartElem = document.getElementById('prettychart')
 var tsElement = document.getElementById('timeseries')
 
 var chartOptions = {
 
 }
+var chart;
 
 function buildData (response) {
   var chartData = {
-    x: response.events.map(function (item) {
+    labels: response.events.map(function (item) {
       return item.timestamp
     }),
-    y: response.events.map(function (item) {
-      return item.min
-    }),
-    type: 'scatter'
+    series: [
+      response.events.map(function (item) {
+       return item.min
+      })
+    ],
   }
   return chartData
 }
 
+
+
 function putDataOnChart (response) {
   var data = buildData(response)
-  Plotly.plot(chartElem, [data])
+  chart = new Chartist.Line('#prettychart', data, {
+    fullWidth: true,
+    chartPadding: {
+      right: 20
+    }
+  })
+
 }
 
 function getFromInput (e) {
