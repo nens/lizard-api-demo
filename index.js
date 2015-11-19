@@ -1,7 +1,4 @@
-//var Chart = require('chartjs')
-//var fetch = window.fetch
-
-var ctx = document.getElementById('prettychart').getContext('2d')
+var chartElem = document.getElementById('prettychart')
 var tsElement = document.getElementById('timeseries')
 
 var chartOptions = {
@@ -10,18 +7,20 @@ var chartOptions = {
 
 function buildData (response) {
   var chartData = {
-    datasets: [{
-      label: response.name,
-      data: response.data
-    }
-   ]
+    x: response.events.map(function (item) {
+      return item.timestamp
+    }),
+    y: response.events.map(function (item) {
+      return item.min
+    }),
+    type: 'scatter'
   }
   return chartData
 }
 
 function putDataOnChart (response) {
   var data = buildData(response)
-  Chart(ctx).line(data, chartOptions)
+  Plotly.plot(chartElem, [data])
 }
 
 function getFromInput (e) {
@@ -44,7 +43,7 @@ function getTS(url) {
 
 function getExample() {
   console.log('hahahah')
-  getTS('https://demo.lizard.net/api/v2/timeseries/296ea3a4-fcd6-4c8e-9c4d-9c2a2cd20076/?end=1447936338553&min_points=320&start=1447692300992')
+  getTS('https://demo.lizard.net/api/v2/timeseries/296ea3a4-fcd6-4c8e-9c4d-9c2a2cd20076/?end=1447936338553&min_points=320&start=1347692300992')
 }
 
 tsElement.addEventListener('keydown', getFromInput, false)

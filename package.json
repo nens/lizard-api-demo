@@ -4,7 +4,8 @@
   "description": "Lizard API demo",
   "main": "index.js",
   "dependencies": {
-    "chartjs": "^0.2.5"
+    "chart.js": "^1.0.2",
+    "plotly.js": "^1.0.0"
   },
   "devDependencies": {
     "beefy": "~2.1.1",
