@@ -21,26 +21,35 @@ function buildData (response) {
 }
 
 function putDataOnChart (response) {
-  var data = buildData(response.results[0])
+  var data = buildData(response)
   Chart(ctx).line(data, chartOptions)
 }
 
-function getTS (e) {
+function getFromInput (e) {
   if (e.keyCode !== 13) {
     return
   }
 
   var url = tsElement.value + '&format=json'
+  
+  getTS(url)
+}
 
+function getTS(url) {
   fetch(url)
     .then(putDataOnChart)
     .catch(function (error) {
-      window.alert(error.message)
+      throw error
     })
 }
 
-tsElement.addEventListener('keydown', getTS, false)
+function getExample() {
+  console.log('hahahah')
+  getTS('https://demo.lizard.net/api/v2/timeseries/296ea3a4-fcd6-4c8e-9c4d-9c2a2cd20076/?end=1447936338553&min_points=320&start=1447692300992')
+}
 
+tsElement.addEventListener('keydown', getFromInput, false)
+document.getElementById('voorbeeld').addEventListener('click', getExample, false)
 
 },{"chartjs":2}],2:[function(require,module,exports){
 /*global module:true*/
