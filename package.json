@@ -1,0 +1,23 @@
+{
+  "name": "lizard-api-demo",
+  "version": "0.0.0",
+  "description": "Lizard API demo",
+  "main": "index.js",
+  "dependencies": {
+    "chartjs": "^0.2.5"
+  },
+  "devDependencies": {
+    "beefy": "~2.1.1",
+    "browserify": "~5.11.0",
+    "lru-cache": "~2.5.0"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/beefy index.js:bundle.js 3001"
+  },
+  "keywords": [
+    "shp",
+    "js"
+  ],
+  "author": "fritzvd",
+  "license": "MIT"
+}
